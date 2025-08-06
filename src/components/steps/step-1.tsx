@@ -7,7 +7,7 @@ const Step1 = () => {
   const [otp, setOtp] = useState("");
   return (
     <div className="w-full">
-      {/* <form className="w-full flex flex-col gap-y-[31px] mt-[30px]">
+      <form className="w-full flex flex-col gap-y-[31px] mt-[30px]">
         <InputMask label="Mobile Number" />
 
         <Otpinput label="Code from SMS" />
@@ -24,7 +24,7 @@ const Step1 = () => {
           placeholder="••••••••"
           eyeIcon={true}
         />
-      </form> */}
+      </form>
     </div>
   );
 };

@@ -19,33 +19,33 @@ const Step3 = () => {
           placeholder="IT and programming"
           selectClassName=""
         />
-        <div className="flex flex-col gap-y-[7px]">
+        <div className="flex flex-col justify-between gap-y-[7px]">
           <label className="input-label">How many people in your team?</label>
           <div className="flex mb-[11px] gap-x-3 ">
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               Only Me{" "}
             </Button>
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               2 - 5{" "}
             </Button>
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               6 - 10{" "}
             </Button>
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               11 - 20{" "}
             </Button>
           </div>
           <div className="flex gap-x-3  ">
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               21 - 40{" "}
             </Button>
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               41 - 50{" "}
             </Button>
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               51 - 100{" "}
             </Button>
-            <Button variant="small" className=" ">
+            <Button variant="small" className=" whitespace-nowrap">
               101- 500
             </Button>
           </div>

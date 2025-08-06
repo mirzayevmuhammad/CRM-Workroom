@@ -44,13 +44,14 @@ const SignUpPage = () => {
         <div className="w-[100%] max-w-[70%]  rounded-[24px]  bg-white shadow-[0px_6px_rgba(196_203_214_0.5)]">
           <div className="flex flex-col max-w-[403px]  mx-auto items-center pt-[97px]">
             <span className="text-[#3F8CFF] font-bold text-[14px]">
-              Step {currentStep} / {totalStep}
+              STEP {currentStep} / {totalStep}
             </span>
             <h2 className="signin-title">
               {progressData[currentStep - 1].title}
             </h2>
-            <Step1 />
-            {currentStep === 2 ? (
+            {currentStep === 1 ? (
+              <Step1 />
+            ) : currentStep === 2 ? (
               <Step2 />
             ) : currentStep === 3 ? (
               <Step3 />
@@ -62,6 +63,13 @@ const SignUpPage = () => {
             onClick={() => incrementCurrentStep()}
             className="border-t-2 mt-[65px] border-[#E4E6E8] pt-[13px] pb-[13px]"
           >
+            <Button
+              variant="small"
+              className="flex  mr-auto  ml-11  items-center gap-x-3"
+            >
+              <Icon.leftArrowIcon />
+              Previous
+            </Button>
             <Button
               disabled={false}
               variant="small"
