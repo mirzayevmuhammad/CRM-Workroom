@@ -1,6 +1,5 @@
 import { IMaskInput } from "react-imask";
 import Button from "./Button";
-import Icon from "./Icon";
 
 interface Props {
   label: string;

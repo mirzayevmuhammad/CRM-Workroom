@@ -2,13 +2,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "./routes";
+import Provider from "./providers/provider";
 
 createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={routes} />
+    <RouterProvider router={routes} />
 );
 
-{
-  /*
+        {
+/*
 git add .
 git commit -m "nima"
 git push  origin main

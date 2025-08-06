@@ -12,6 +12,8 @@
 .btn.small {
   padding: 13px 21px;
 }
+
+
 .btn:hover {
   opacity: 0.7;
 }

@@ -1,16 +1,13 @@
-import Input from "../ui/Input";
-import { IMaskInput } from "react-imask";
-import OtpInput from "react-otp-input";
-import "../../assets/styles/input.css";
 import { useState } from "react";
+import "../../assets/styles/input.css";
+import Input from "../ui/Input";
 import InputMask from "../ui/input-mask";
-import Otpinput from "../ui/otp-input,";
-import Button from "../ui/Button";
+import Otpinput from "../ui/otp-input";
 const Step1 = () => {
   const [otp, setOtp] = useState("");
   return (
     <div className="w-full">
-      <form className="w-full flex flex-col gap-y-[31px] mt-[30px]">
+      {/* <form className="w-full flex flex-col gap-y-[31px] mt-[30px]">
         <InputMask label="Mobile Number" />
 
         <Otpinput label="Code from SMS" />
@@ -27,7 +24,7 @@ const Step1 = () => {
           placeholder="••••••••"
           eyeIcon={true}
         />
-      </form>
+      </form> */}
     </div>
   );
 };

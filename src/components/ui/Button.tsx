@@ -1,7 +1,7 @@
-import "../../assets/styles/button.css";
 import React, { type HTMLAttributes } from "react";
+import "../../assets/styles/button.css";
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  variant: "small" | "medium";
+  variant: "small" | "medium " ;
   children: React.ReactNode;
   disabled?: boolean;
 }

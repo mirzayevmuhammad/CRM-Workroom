@@ -27,6 +27,7 @@ const data: IDataProgress[] = [
     step: 4,
     isSuccess: false,
   },
+
 ];
 
 const useStepProgressAuth = () => {

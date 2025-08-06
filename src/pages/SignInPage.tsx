@@ -56,13 +56,15 @@ const SignInPage = () => {
                 </span>
               </div>
               <div className="flex flex-col items-center gap-y-[20px]">
-                <Button variant="medium" className="flex items-center gap-x-2">
+                <Button variant="medium " className="flex items-center gap-x-2">
                   Sign In
                   <Icon.rightArrowIcon />
                 </Button>
-                <span className="font-semibold text-[16px] text-[#3F8CFF]">
-                  Don’t have an account?
-                </span>
+                <a href="/sign-up">
+                  <span className="font-semibold text-[16px] text-[#3F8CFF]">
+                    Don’t have an account?
+                  </span>
+                </a>
               </div>
             </form>
           </div>

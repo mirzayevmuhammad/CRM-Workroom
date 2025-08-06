@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
+import Step1 from "../components/steps/step-1";
+import Step2 from "../components/steps/step-2";
+import Step3 from "../components/steps/step-3";
+import Step4 from "../components/steps/step-4";
 import Button from "../components/ui/Button";
 import Icon from "../components/ui/Icon";
-import Input from "../components/ui/Input";
 import ProgressStepAuth from "../components/ui/progress-step-auth";
 import useStepProgressAuth from "../hooks/useStepProgressAuth";
-import Step1 from "../components/steps/step-1";
-
 const SignUpPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isSuccess, setIsSuccess] = useState(false);
+
   const totalStep = 4;
   const { progressData, setProgressData } = useStepProgressAuth();
   const handleSavePreviusStep = () => {
@@ -49,16 +50,23 @@ const SignUpPage = () => {
               {progressData[currentStep - 1].title}
             </h2>
             <Step1 />
+            {currentStep === 2 ? (
+              <Step2 />
+            ) : currentStep === 3 ? (
+              <Step3 />
+            ) : currentStep === 4 ? (
+              <Step4 />
+            ) : null}
           </div>
           <div
             onClick={() => incrementCurrentStep()}
             className="border-t-2 mt-[65px] border-[#E4E6E8] pt-[13px] pb-[13px]"
           >
             <Button
-              disabled={isSuccess}
+              disabled={false}
               variant="small"
               className={`flex  ml-auto  mr-11  items-center gap-x-3 ${
-                !isSuccess && "disabled"
+                !false && "disabled"
               }`}
             >
               Next Step <Icon.rightArrowIcon />
