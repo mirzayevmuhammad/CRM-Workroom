@@ -3,11 +3,22 @@ import React, { type HTMLAttributes } from "react";
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   variant: "small" | "medium";
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
-const Button = ({ variant, children, className, ...props }: ButtonProps) => {
+const Button = ({
+  variant,
+  children,
+  className,
+  disabled=true,
+  ...props
+}: ButtonProps) => {
   return (
-    <button className={`btn cursor-pointer ${variant} ${className}`} {...props}>
+    <button
+      disabled={disabled}
+      className={`btn cursor-pointer  ${variant} ${className}`}
+      {...props}
+    >
       {children}
     </button>
   );

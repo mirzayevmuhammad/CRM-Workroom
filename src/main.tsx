@@ -9,6 +9,8 @@ createRoot(document.getElementById("root")!).render(
 
 {
   /*
-
+git add .
+git commit -m "nima"
+git push  origin main
   */
 }
