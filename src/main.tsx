@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
 {
   /*
 git add .
-git commit -m "nima"
+git commit -m "update"
 git push  origin main
   */
 }
