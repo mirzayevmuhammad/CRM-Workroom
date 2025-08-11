@@ -8,7 +8,9 @@ interface Props {
 const queryClient = new QueryClient();
 
 const Provider = ({ children }: Props) => {
-  return <QueryClientProvider client={queryClient}></QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
 };
 
 export default Provider;

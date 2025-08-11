@@ -14,7 +14,7 @@ export const SIgnUpSuccess = () => {
               You are successfully registered!
             </h2>
             <a href="/sign-in">
-              <Button variant="medium" className="flex gap-x-2 mt-[-6px]">
+              <Button variant="medium " className="flex gap-x-2 mt-[-6px]">
                 Let's Start <Icon.rightArrowIcon />{" "}
               </Button>
             </a>
