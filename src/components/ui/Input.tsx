@@ -5,9 +5,14 @@ import {
 } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import "../../assets/styles/input.css";
+import Icon from "../../components/ui/Icon";
+
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
   label: string;
   eyeIcon?: boolean;
+  locIcon?: boolean;
+  calIcon?: boolean;
+
   inputClassName: string;
   required?: boolean;
   placeholder: string;
@@ -17,6 +22,9 @@ interface InputProps extends HTMLAttributes<HTMLInputElement> {
 const Input = ({
   label,
   eyeIcon,
+  locIcon,
+  calIcon,
+
   required,
   inputClassName,
   type,
@@ -51,6 +59,22 @@ const Input = ({
               ) : (
                 <IoEyeOffOutline className="size-5" />
               )}
+            </button>
+          )}
+          {locIcon && (
+            <button
+              type="button"
+              className="absolute cursor-pointer z-50 bg-transparent top-[50%] translate-y-[-50%] right-[16px] flex items-center"
+            >
+              <Icon.Location />
+            </button>
+          )}{" "}
+          {calIcon && (
+            <button
+              type="button"
+              className="absolute cursor-pointer z-50 bg-transparent top-[50%] translate-y-[-50%] right-[16px] flex items-center"
+            >
+              <Icon.Calendar />
             </button>
           )}
         </div>

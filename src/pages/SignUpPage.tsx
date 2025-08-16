@@ -7,6 +7,7 @@ import useStepProgressAuth from "../hooks/useStepProgressAuth";
 import Step2 from "../components/steps/step-2";
 import Step3 from "../components/steps/step-3";
 import Step4 from "../components/steps/step-4";
+import { SIgnUpSuccess } from "./SignUpSuccess";
 const SignUpPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [nextStep, setNextStep] = useState<boolean>(false);

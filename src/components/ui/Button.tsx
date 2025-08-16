@@ -16,7 +16,7 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      className={`btn cursor-pointer  ${variant} ${className}`}
+      className={`btn cursor-pointer font-semibold ${variant} ${className}`}
       {...props}
     >
       {children}
