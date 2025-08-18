@@ -24,9 +24,9 @@ export const routes = createBrowserRouter([
     children: [
       {
         element: (
-          <ProtectedRouteComponent>
+          // <ProtectedRouteComponent>
             <RootLayout />
-          </ProtectedRouteComponent>
+          /* </ProtectedRouteComponent> */
         ),
         children: [
           {

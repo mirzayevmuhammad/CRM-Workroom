@@ -8,7 +8,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Profil = () => {
-  const [currenTab, setCurrenTab] = useState("profil-control");
+  const [currenTab, setCurrenTab] = useState("");
 
   return (
     <div className="ml-[240px] pt-[50px] pb-[30px] ">
