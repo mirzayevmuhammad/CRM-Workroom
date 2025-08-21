@@ -1,8 +1,16 @@
 import Button from "../components/ui/Button";
 import Icon from "../components/ui/Icon";
 import "../index.css";
+import React from "react";
+import { Calendar } from "antd";
+import type { CalendarProps } from "antd";
+import type { Dayjs } from "dayjs";
 
-const CalendarPage = () => {
+const CalendarPage: React.FC = () => {
+  const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>["mode"]) => {
+    console.log(value.format("YYYY-MM-DD"), mode);
+  };
+
   return (
     <div className="ml-[240px] pt-[50px] pb-[30px]">
       <div className="flex justify-between  items-center mt-[10px]">
@@ -15,9 +23,10 @@ const CalendarPage = () => {
           Add Events
         </Button>
       </div>
-      <div className="w-full h-[715px] shadow bg-white rounded-[24px] mt-[28px] pt-[26px]"></div>
+      <div className="w-full  shadow bg-white rounded-[24px] mt-[28px] pt-[26px] mb-[50px] ">
+        <Calendar onPanelChange={onPanelChange} />
+      </div>
     </div>
   );
 };
-
 export default CalendarPage;

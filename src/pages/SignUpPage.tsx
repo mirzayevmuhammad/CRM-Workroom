@@ -7,10 +7,13 @@ import useStepProgressAuth from "../hooks/useStepProgressAuth";
 import Step2 from "../components/steps/step-2";
 import Step3 from "../components/steps/step-3";
 import Step4 from "../components/steps/step-4";
-import { SIgnUpSuccess } from "./SignUpSuccess";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { useCheckEmail } from "../hooks/requests/useCheckEmail";
+import { toast } from "react-toastify";
 const SignUpPage = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
   const [nextStep, setNextStep] = useState<boolean>(false);
+  const form = useForm();
   const totalStep = 4;
   const { progressData, setProgressData } = useStepProgressAuth();
   const handleSavePreviusStep = () => {
@@ -23,6 +26,11 @@ const SignUpPage = () => {
       setCurrentStep((prevState) => prevState + 1);
     }
   };
+
+  const decrementCurrentStep = () => {
+    setCurrentStep((prevState) => prevState - 1);
+  };
+
   useEffect(() => {
     if (currentStep !== 1) {
       handleSavePreviusStep();
@@ -31,10 +39,10 @@ const SignUpPage = () => {
   const getCurrentStep = () => {
     switch (currentStep) {
       case 1: {
-        return <Step1 />;
+        return <Step1 form={form} setNextStep={setNextStep} />;
       }
       case 2: {
-        return <Step2 />;
+        return <Step2 form={form} setNextStep={setNextStep} />;
       }
       case 3: {
         return <Step3 />;
@@ -44,6 +52,27 @@ const SignUpPage = () => {
       }
     }
   };
+
+  const { mutateAsync, data, isSuccess } = useCheckEmail();
+
+  const onSubmit: SubmitHandler<any> = (data: any) => {
+    if (currentStep <= 1) {
+      const email = data.email;
+      mutateAsync(email);
+    }
+    console.log(data);
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      const status = data.data;
+      if (!status) {
+        return incrementCurrentStep();
+      }
+      toast.error("email already exists");
+    }
+  }, [isSuccess]);
+
   return (
     <section className="h-screen p-[20px_35px_30px_35px] bg-[#F4F9FD]">
       <div className="flex h-full gap-x-8">
@@ -58,8 +87,8 @@ const SignUpPage = () => {
             <ProgressStepAuth steps={progressData} currentStep={currentStep} />
           </div>
         </div>
-        <div className="w-[100%] flex flex-col justify-between max-w-[70%] rounded-[24px]  bg-white shadow-[0px_6px_rgba(196_203_214_0.5)]">
-          <div className="flex flex-col max-w-[403px] w-full mx-auto items-center pt-[55px]">
+        <div className="w-[100%] justify-between max-w-[70%] rounded-[24px]  bg-white shadow-[0px_6px_rgba(196_203_214_0.5)]">
+          <div className="flex flex-col w-full mx-auto items-center pt-[55px] h-full">
             <span className="font-bold text-[14px] text-[#3F8CFF]">
               Step {currentStep}/{totalStep}
             </span>
@@ -67,24 +96,41 @@ const SignUpPage = () => {
               {progressData[currentStep - 1].title}
             </h2>
             <form
-              onSubmit={(event) => event.preventDefault()}
-              className="flex w-full flex-col gap-y-[15px] mt-[33px]"
+              className="w-full h-full flex flex-col justify-between"
+              onSubmit={form.handleSubmit(onSubmit)}
             >
-              {getCurrentStep()}
+              <div className="flex w-full max-w-[403px] mx-auto flex-col gap-y-[15px] mt-[33px]">
+                {getCurrentStep()}
+              </div>
+              <div
+                className={`border-t-2 border-[#E4E6E8] pt-[10px] pb-[10px] ${
+                  currentStep !== 1 ? "flex" : ""
+                }`}
+              >
+                {currentStep !== 1 && (
+                  <Button
+                    variant="small"
+                    type="submit"
+                    onClick={() => decrementCurrentStep()}
+                    className={`flex ml-[50px] previus items-center gap-x-3`}
+                  >
+                    <Icon.leftArrowIcon />
+                    Previous
+                  </Button>
+                )}
+                <Button
+                  variant="small"
+                  type="submit"
+                  disabled={!nextStep}
+                  className={`flex ml-auto mr-10 items-center gap-x-3 ${
+                    !nextStep ? "disabled" : ""
+                  }`}
+                >
+                  Next Step
+                  <Icon.rightArrowIcon />
+                </Button>
+              </div>
             </form>
-          </div>
-          <div className="border-t-2 border-[#E4E6E8] pt-[10px] pb-[10px]">
-            <Button
-              variant="small"
-              disabled={nextStep}
-              onClick={incrementCurrentStep}
-              className={`flex ml-auto mr-10 items-center gap-x-3 ${
-                !nextStep ? "disabled" : ""
-              }`}
-            >
-              Next Step
-              <Icon.rightArrowIcon />
-            </Button>
           </div>
         </div>
       </div>

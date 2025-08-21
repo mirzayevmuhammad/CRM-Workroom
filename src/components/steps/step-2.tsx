@@ -1,36 +1,52 @@
-import { useState } from "react";
-import "../../assets/styles/input.css";
-import Input from "../ui/Input";
-import InputMask from "../ui/input-mask";
-import Otpinput from "../ui/otp-input";
-import Select from "../ui/Select";
-const Step2 = () => {
-  const [otp, setOtp] = useState("");
+import { useEffect, type Dispatch, type SetStateAction } from "react";
+import { useGetProfileQuestions } from "../../hooks/requests/useGetProfileQuestions";
+import AttributeLayout from "../atrebute-layout";
+import type {
+  UseControllerReturn,
+  UseFormRegister,
+  UseFormReturn,
+} from "react-hook-form";
+
+export interface IOptions {
+  id: string;
+  option_text: string;
+  option_value: string;
+}
+
+export interface IQuestions {
+  id: string;
+  question_text: string;
+  question_type: string;
+  is_required: boolean;
+  options?: IOptions[];
+}
+
+interface Props {
+  setNextStep: Dispatch<SetStateAction<boolean>>;
+  form: UseFormReturn<any>;
+}
+
+const Step2 = ({ setNextStep, form }: Props) => {
+  const { data, isError, isSuccess } = useGetProfileQuestions(2);
+  const questions: IQuestions[] = data?.data;
+  useEffect(() => {
+    setNextStep(true);
+  }, []);
   return (
-    <div className="">
-      <form className="w-full flex flex-col gap-y-[31px] mt-[30px]">
-        <Select
-          label="Why will you use the service?"
-          placeholder="Work"
-          selectClassName="w-full"
-        />
-        <Select
-          label="What describes you best?"
-          placeholder="Business Owner"
-          selectClassName="w-full"
-        />
-        <div className="flex mb-[155px]">
-          <label className="input-label mr-[66px]">What describes you best?</label>
-          <div className="flex gap-x-2 mr-[35px]">
-            <input type="radio" />
-            <label htmlFor="">Yes</label>
-          </div>
-          <div className="flex gap-x-2">
-            <input type="radio" />
-            <label htmlFor="">No</label>
-          </div>
-        </div>
-      </form>
+    <div className="flex flex-col gap-y-6">
+      {questions &&
+        questions.length >= 1 &&
+        questions.map((question) => (
+          <AttributeLayout
+            form={form}
+            key={question.id}
+            is_required={question.is_required}
+            question_id={question.id}
+            question_text={question.question_text}
+            type={question.question_type}
+            options={question.options}
+          />
+        ))}
     </div>
   );
 };

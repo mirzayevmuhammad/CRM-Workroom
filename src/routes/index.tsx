@@ -1,22 +1,22 @@
+import { Settings } from "lucide-react";
 import { createBrowserRouter } from "react-router-dom";
+import ProfilControl from "../components/ProfilControl";
+import VacationsCalendar from "../components/VacationsCalendar";
 import AppWrapperLayout from "../layouts/AppWrapperLayout";
 import RootLayout from "../layouts/RootLayout";
+import { AddProject } from "../pages/AddProject";
+import CalendarPage from "../pages/CalendarPage";
 import DashboardPage from "../pages/DashboardPage";
+import EmployeesPage from "../pages/EmployeesPage";
+import InfoPortalPage from "../pages/InfoPortal";
+import MessagerPage from "../pages/MessagePage";
+import NearestEventsPage from "../pages/NearestEventsPage";
+import ProfilPage from "../pages/Profil";
+import ProjectsPage from "../pages/ProjectsPage";
 import SignInPage from "../pages/SignInPage";
 import SignUpPage from "../pages/SignUpPage";
 import { SIgnUpSuccess } from "../pages/SignUpSuccess";
-import ProjectsPage from "../pages/ProjectsPage";
-import CalendarPage from "../pages/CalendarPage";
 import VacationsPage from "../pages/VacationsPage";
-import EmployeesPage from "../pages/EmployeesPage";
-import MessagerPage from "../pages/MessagePage";
-import InfoPortalPage from "../pages/InfoPortal";
-import NearestEventsPage from "../pages/NearestEventsPage";
-import VacationsCalendar from "../components/VacationsCalendar";
-import ProfilPage from "../pages/Profil";
-import ProtectedRouteComponent from "../components/protected.route";
-import ProfilControl from "../components/ProfilControl";
-import { Settings } from "lucide-react";
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +41,7 @@ export const routes = createBrowserRouter([
             path: "/projects",
             element: <ProjectsPage />,
           },
+
           {
             path: "/calendar",
             element: <CalendarPage />,
@@ -88,8 +89,12 @@ export const routes = createBrowserRouter([
         element: <SignUpPage />,
       },
       {
-        path: "sign-up/success",
+        path: "/success",
         element: <SIgnUpSuccess />,
+      },
+      {
+        path: "/add-project",
+        element: <AddProject />,
       },
     ],
   },

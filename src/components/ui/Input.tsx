@@ -12,7 +12,7 @@ interface InputProps extends HTMLAttributes<HTMLInputElement> {
   eyeIcon?: boolean;
   locIcon?: boolean;
   calIcon?: boolean;
-
+  watchIcon?: boolean;
   inputClassName: string;
   required?: boolean;
   placeholder: string;
@@ -24,7 +24,7 @@ const Input = ({
   eyeIcon,
   locIcon,
   calIcon,
-
+  watchIcon,
   required,
   inputClassName,
   type,
@@ -75,6 +75,14 @@ const Input = ({
               className="absolute cursor-pointer z-50 bg-transparent top-[50%] translate-y-[-50%] right-[16px] flex items-center"
             >
               <Icon.Calendar />
+            </button>
+          )}
+          {watchIcon && (
+            <button
+              type="button"
+              className="absolute cursor-pointer z-50 bg-transparent top-[50%] translate-y-[-50%] right-[16px] flex items-center"
+            >
+              <Icon.Watch />
             </button>
           )}
         </div>

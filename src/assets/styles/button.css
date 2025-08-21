@@ -34,3 +34,12 @@
   padding-bottom: 0.625rem; /* py-2.5 */
   text-align: center; /* text-center */
 }
+
+.btn.previus {
+  background: none;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Nunito Sans;
+  color: #3f8cff;
+}

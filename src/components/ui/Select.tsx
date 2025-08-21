@@ -1,28 +1,62 @@
-import "../../assets/styles/select.css";
+import ReactSelect from "react-select";
+import type { IOptions } from "../steps/step-2";
+import { Controller, type UseFormReturn } from "react-hook-form";
 
-interface SelectProps {
-  label: string;
-  selectClassName: string;
-  placeholder: string;
+interface Props {
+  question_text: string;
+  options: IOptions[];
+  is_required: boolean;
+  name: string;
+  form: UseFormReturn<any>;
 }
 
-const Select = ({
-  label,
-  selectClassName,
-  placeholder,
-  ...props
-}: SelectProps) => {
+const Select = ({ question_text, options, is_required, form, name }: Props) => {
+  const optionsData = options?.map((option) => {
+    return {
+      value: option.option_value,
+      label: option.option_text,
+    };
+  });
   return (
-    <>
-      <div>
-        <label className="select-label">{label}</label>
-        <div>
-          <select className={`select w-full mt-1.5  ${selectClassName}`}>
-            <option>{placeholder}</option>
-          </select>
-        </div>
-      </div>
-    </>
+    <div className="flex flex-col gap-y-2">
+      <label className="font-semibold text-[#7D8592]">{question_text}</label>
+      <Controller
+        name={name}
+        control={form.control}
+        render={(props) => {
+          return (
+            <ReactSelect
+              options={optionsData}
+              onChange={props.field.onChange}
+              value={props.field.value}
+              required={is_required}
+              styles={{
+                indicatorSeparator: (base) => {
+                  return {
+                    listStyle: "none",
+                  };
+                },
+                control(base, props) {
+                  return {
+                    color: "red",
+                    border: "1px solid #D8E0F0",
+                    borderRadius: "14px",
+                    display: "flex",
+                    padding: "6px 12px",
+                  };
+                },
+                placeholder(base, props) {
+                  return {
+                    ...base,
+                    color: "#7D8592",
+                  };
+                },
+              }}
+            />
+          );
+        }}
+      />
+    </div>
   );
 };
 

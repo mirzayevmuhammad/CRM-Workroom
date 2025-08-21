@@ -1,8 +1,8 @@
+import { NavLink } from "react-router-dom";
 import Illustration from "../assets/icons/Illustration.svg";
 import "../assets/styles/sign-in.css";
-import Button from "../components/ui/Button";
 import Icon from "../components/ui/Icon";
-
+import "../assets/styles/button.css";
 export const SIgnUpSuccess = () => {
   return (
     <section className=" h-screen p-[20px__35px_30px_35px] bg-[#f4f9fd] ">
@@ -13,11 +13,12 @@ export const SIgnUpSuccess = () => {
             <h2 className="signUp-tittle mb-[24px]">
               You are successfully registered!
             </h2>
-            <a href="/sign-in">
-              <Button variant="medium " className="flex gap-x-2 mt-[-6px]">
-                Let's Start <Icon.rightArrowIcon />{" "}
-              </Button>
-            </a>
+            <NavLink
+              to={"/"}
+              className="btn medium flex gap-x-2 mt-[-6px] items-center"
+            >
+              Let's Start <Icon.rightArrowIcon />{" "}
+            </NavLink>
           </div>
         </div>
       </div>

@@ -1,22 +1,25 @@
-import React, { type HTMLAttributes } from "react";
 import "../../assets/styles/button.css";
+import React, { type HTMLAttributes } from "react";
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  variant: "small" | "medium " ;
-  children: React.ReactNode;
+  variant: "small" | "medium";
   disabled?: boolean;
+  type: "submit" | "button" | "reset";
+  children: React.ReactNode;
 }
 
 const Button = ({
   variant,
   children,
   className,
-  disabled=true,
+  type,
+  disabled = false,
   ...props
 }: ButtonProps) => {
   return (
     <button
       disabled={disabled}
-      className={`btn cursor-pointer font-semibold ${variant} ${className}`}
+      type={type}
+      className={`btn cursor-pointer ${variant} ${className}`}
       {...props}
     >
       {children}
